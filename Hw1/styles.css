@@ -6,8 +6,8 @@
     padding: 50px;
     border: 2px solid;
     box-shadow: 8px 8px 1px 2px #5E4C81;
-    position: absolute;
-    top: 20%;
+    position: relative;
+    top: 140px;
     left: 20%;
 }
 
