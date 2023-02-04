@@ -1,0 +1,25 @@
+h1 {
+    color: #be2ed6;
+    text-align: left;
+}
+
+p {
+    font-size: 20px;
+    color: red;
+    text-align: left;
+}
+.content{
+    background: #d4b9b9;
+    padding: 20px;
+    margin: 20px;
+    border-width: 5px;
+    border-style: dashed;
+    border-color: black;
+    /*border: 5px dashrd black;*/
+}
+.content h1{
+    color: blue;
+}
+div h1 {
+    font-size: 380%;
+}
