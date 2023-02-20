@@ -1,0 +1,22 @@
+h1 {
+    color: darkolivegreen;
+    text-decoration: underline wavy;
+}
+
+#essay {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkcyan;
+    font-style: italic;
+    font-weight: lighter; /* bold*/
+    border-style: dashed;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    padding-bottom: 4%;
+    border-color: darkgoldenrod;
+    text-decoration: underline;
+}
+
+body {
+    background-color: lightcyan;
+}
