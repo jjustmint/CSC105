@@ -1,0 +1,51 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+  a{
+      color: lightgreen;
+    }
+  a:hover{
+    color: red;
+  }
+li{
+  margin-right: 40px;
+  list-style: none;
+}
+  .FavoriteSite {
+  margin: 20px;
+  }
+  .Profile{
+    margin: 20px;
+    padding: 20px;
+    width: 40%;
+    border: 2px solid black;
+    transition: border-color 1s;
+  }
+  .Profile h2{
+    color: black;
+    transition: color 1s;
+  }
+  .Profile:hover h2{
+    color: red;
+  }
+  .Profile:hover{
+    border-color: red;
+  }
+    .Profile:hover h2 {
+      border-color: red;
+    }
+.Gallery{
+  margin: 20px;
+  text-align: center;
+}
+.Gallery img{
+  width: 20%;
+  transition: transform 1s;
+}
+.Gallery img:hover{
+  transform: scale(1.2);
+}
