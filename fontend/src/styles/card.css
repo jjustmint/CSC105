@@ -1,0 +1,26 @@
+.card-container{
+    width: 200px;
+    height: 200px;
+    border: 1px lightgreen solid;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+    
+    /* display: flex;
+    flex-direction: column; */
+    align-items: center;
+
+}
+.card-container:hover{
+    background-color: lightgreen;
+    transition: background-color 1s;
+}
+.card-container:hover p{
+    color: black;
+}
+/* .card-header{
+    color: yellowgreen;
+}
+.card-body{
+    color: lightsalmon;
+} */
