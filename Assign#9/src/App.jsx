@@ -23,10 +23,13 @@ import MyForm from './components/MyForm';
 // }
 
 // export default App
-const App = () => {
+function App () {
   return(
-  //  <TypeMe />
-   <MyForm />
+    <div className='App'>
+    <List users = {users} />
+    <TypeMe />
+    <MyForm />
+    </div>
   );
 }
   // function handleSubmit(event) {
@@ -61,21 +64,21 @@ const App = () => {
   // function handleClick() {
   //   alert("You clicked!");
   // }
-  // const users = [{
-  //   name: 'Name: Petchpailin Saringkareekul',
-  //   job: 'Job: Student',
-  //   hobby: 'Hobby: Playing video games'
-  // },
-  // {
-  //   name: 'Name: Petchpailin Saringkareekul',
-  //   job: 'Job: Student',
-  //   hobby: 'Hobby: Playing piano'
-  // },
-  // {
-  //   name: 'Name: Petchpailin Saringkareekul',
-  //   job: 'Job: Student',
-  //   hobby: 'Hobby: Sleeping'
-  // }]
+  const users = [{
+    name: 'Name: Petchpailin Saringkareekul',
+    job: 'Job: Student',
+    hobby: 'Hobby: Playing video games'
+  },
+  {
+    name: 'Name: Petchpailin Saringkareekul',
+    job: 'Job: Student',
+    hobby: 'Hobby: Playing piano'
+  },
+  {
+    name: 'Name: Petchpailin Saringkareekul',
+    job: 'Job: Student',
+    hobby: 'Hobby: Sleeping'
+  }]
   // return <List users = {users} />;
   // return(
   //   <div className='App'>
