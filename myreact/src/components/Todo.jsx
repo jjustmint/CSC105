@@ -1,56 +1,139 @@
 import { useState } from "react";
 import CardList from "./CardList";
+import {Box, Typography, Modal, TextField, Button} from "@mui/material";
 
+const addNewTasskBarStyle = {
+    padding: "20px",
+    background: "#fefffe",
+    width: { xs:"300px", md: "500px"},
+    borderRadius : "10px",
+    margin: "20px 0px",
+    fontSize: "25px",
+    color: "#7b7b7b",
+    display: "flex",
+    alignItem: "center",
+    justifyContent: "center",
+    boxShadow: "0 4px 8 px 0 rgba(0,0,0,0.2)",
+};
+const wrapperTodoListStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItem: "center",
+    margin: "20px",
+};
+const wrapperHeaderStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItem: "center",
+};
+const headerTextStyle = {
+    color: "#fefffb",
+    fontSize: {xs: "50ppx", md:"60px"},
+};
+const headerTodoListLengthStyle = {
+    padding: "20px 30px",
+    backgroundColor: "#b0a3f5",
+    boxShadow:"0 4px 8px rgba(0,0,0,0.2)",
+    fontSize: "50px",
+    borderRadius: "10px",
+    color: "white",
+    fontWeight: "bold",
+};
+const modalStyle={
+    display: "flex",
+    flexDirection: "column",
+    alignItem: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "tranlate(-50%, -50%)" ,
+    width: 400 ,
+    bgcolor:"background.paper",
+    border: "solod 3px #b0aa3f5" ,
+    boxShadow: 24,
+    p: 4,
+    borderRadiusL: "10px",
+};
+const horizontalStyle = {
+    width: "90%",
+    backgroundColor: "white",
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)"
+};
 function Todo() {
     const [todo, setTodo] = useState([]);
+    const[open, setOpen] = useState(false);
 
+    function handleInput(e){
+        setTodoInput(e.target.value);
+        if(e.target.value === null || e.target.value ==="") {
+            setTodoError(true);
+        }else{
+            setTodoError(false);
+        }
+    }
+    
+    const [todoInput, setTodoInput] = useState("");
+    const[todoError, setTodoError] = useState(true);   
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    
     //handle function
     function handleAdd() {
-        setTodo([...todo, "new task"])
+        setTodo([...todo, todoInput]);
+        setTodoInput("");
+        setTodoError(true);
+        handleClose();
     }
     return (
-        <div>
-            <div 
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItem: "center",
-                }}
-                >
+        <>
+        <Modal
+            open = {open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-madal-description"
+            >
+                <Box sx={modalStyle}>
+                    <TextField 
+                    error={todoError}
+                    id="todo"
+                    label="What do you wnat to do ?"
+                    variant="outlined"
+                    onChange={(e) => handleInput(e)}
+                    />
+                    <Button
+                        variant="contained"
+                        onClick={handleAdd}
+                        sx={{margin: "20px 0px 0px 0px"}}
+                        disabled = {todoError}
+                        >
+                            Add
+                        </Button>
+                </Box>
+            </Modal>
+        <Box sx={{margin:"20px"}}>
+            <div style={wrapperHeaderStyle}>
                     <div>
-                        <h1 style={{color: "#fefffb", fontSize: "60px"}}>Incoming</h1>    
+                        <Typography variant="h1" sx={headerTextStyle}>
+                            Incoming
+                        </Typography>    
                     </div> 
-                    <div
-                    style={{
-                        padding: "20px 30px",
-                        backgroundColor: "#b0a3f5",
-                        fontSize: "50px",
-                        borderRadius: "10px",
-                        color: "white",
-                        fontWeight: "bold",
-                    }}
-                    >
+                    <div style={headerTodoListLengthStyle}>
                         {todo.length}
                     </div>   
                 </div>
-                <div 
-                style={{
-                    padding: "20px",
-                    background: "#fefffe",
-                    width: "500px",
-                    borderRadius: "10px",
-                    margin: "20px 0px",
-                    fontSize: "25px",
-                    color: "#7b7b7b",
-                }}
-                onClick={handleAdd}
-                >
+                <Box sx={wrapperTodoListStyle}>
+                <Box sx={addNewTasskBarStyle} onClick={handleOpen}>
                     + Add New Tasks
-                </div>
+                </Box>
                 {todo.map((item)=>{
                     return <CardList task={item}/>
                 })}
-        </div>
+                </Box>
+                <hr style={horizontalStyle} />
+        </Box>
+        </>
     );
 }
 export default Todo;
