@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import { height } from "@mui/system";
 
 function Rightbar() {
   return (
@@ -11,8 +12,9 @@ function Rightbar() {
       flexDirection="column"
       sx={{ display: { xs: "none", md: "flex" } }}
     >
+      <p>Lastest Photos</p>
       <Box display="flex" flexDirection="column">
-        <ImageList cols={2} rowHeight={250}>
+        <ImageList sx={{ width: 300, height: 300 }} cols={2} rowHeight={150}>
           <ImageListItem>
             <img
               src="https://www.holidaysmart.com/sites/default/files/dailyimage/og/2022/cat-scottish-fold-day.jpg"

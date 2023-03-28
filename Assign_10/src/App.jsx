@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Grid container direction="row" spacing={2} pt={5}>
+      <Grid container direction="row" spacing={2} pt={2}>
         <Grid item xs={4}>
           <Sidebar />
         </Grid>

@@ -24,12 +24,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import DehazeIcon from "@mui/icons-material/Dehaze";
+import { Margin } from '@mui/icons-material';
 
 
 export default function Nav() {
   return (
     <Box className="Nav" sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#20232a" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#20232a" ,Margin:"0"}}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box>
             <Typography>My Website</Typography>

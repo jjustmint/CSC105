@@ -20,7 +20,7 @@ export default function Content() {
           sx={{
             // width: 500,
             // height: 300,
-            padding: "20px",
+            padding: "0px",
             backgroundColor: "",
             // "&:hover": {
             //   backgroundColor: "primary.main",
