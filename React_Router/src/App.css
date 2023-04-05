@@ -1,0 +1,48 @@
+#root {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+.top{
+  color: black;
+}
+*{
+  text-align: center;
+}
+.bot>*{
+  margin: 10px;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.button{
+  background-image: linear-gradient(to right, #273CA2, #6E20D8);
+  height: 40px;
+  width: 60px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.button2{
+  background-image: linear-gradient(to right, #273CA2, #6E20D8);
+  border-radius: 4px;
+    color: white;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a.active{
+  color: red;
+  font-weight: 600;
+}
+box{
+  border-radius: 20px;
+}
+
+
+
