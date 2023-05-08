@@ -98,7 +98,7 @@ app.post("/login", async (req, res) => {
             message: "this username does not exist",
           });
         }
-        const isMatch = await bcrypt.compare(password, rows[0].hash_password);
+        const isMatch = await bcrypt.compare(password, rows[0].hashed_password);
         if (!isMatch) {
           res.json({
             success: false,
