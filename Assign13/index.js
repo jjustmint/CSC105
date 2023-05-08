@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   port: "6105",
   user: "lab_ocqmz",
   password: "F7DYYpIrNGB7BEfZ",
-  database: "lab_blank01_o3dmaz",
+  database: "lab_todo02_o5cuzh",
 });
 
 connection.connect(() => {
@@ -41,8 +41,8 @@ app.post("/register",async (req, res) => {
 
 
   connection.query(
-    `INSERT INTO users (username, hash_password) VALUES (?,?)`,
-    [username, hash],
+    `INSERT INTO users (username, password, hashed_password) VALUES (?,?,?)`,
+    [username, password, hash],
     (err, rows) => {
       // Check if cannot find the data in the database then return the error
       if (err) {
