@@ -1,21 +1,77 @@
 import { Box, Button, Card, Modal, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useKeyDown } from '../../../hooks/useKeyDown';
 import CommentCard from './components/CommentCard';
+import Axios from '../../AxiosInstance';
+import Cookies from 'js-cookie';
+import GlobalContext from '../../Context/GlobalContext';
+import { AxiosError } from 'axios';
 
 const CommentModal = ({ open = false, handleClose = () => {} }) => {
   const [textField, setTextField] = useState('');
   const [comments, setComments] = useState([]);
 
+  const [error, setError] = useState({});
+  const { setStatus } = useContext(GlobalContext);
+
   useKeyDown(() => {
     handleAddComment();
   }, ['Enter']);
 
-  const handleAddComment = () => {
+  useEffect(() => {
+    const userToken = Cookies.get('UserToken');
+    if (userToken !== undefined && userToken !== 'undefined') {
+      Axios.get('/comment', { headers: { Authorization: `Bearer ${userToken}` } }).then((res) => {
+        const commentsData = res.data.data.map((comment) => ({
+          id: comment.id,
+          msg: comment.text,
+        }));
+        setComments(commentsData);
+      });
+    }
+  }, []);
+  const handleAddComment = async () => {
     // TODO implement logic
-    setComments([...comments, { id: Math.random(), msg: textField }]);
+    if (!validateForm()) return;
+
+    try {
+      const userToken = Cookies.get('UserToken');
+      const response = await Axios.post(
+        '/comment',
+        { text: textField },
+        {
+          headers: { Authorization: `Bearer ${userToken}` },
+        }
+      );
+      if (response.data.success) {
+        setStatus({ severity: 'success', msg: 'Create comment successfully' });
+        setComments([...comments, { id: Math.random(), msg: textField }]);
+        resetAndClose();
+      }
+    } catch (error) {
+      if (error instanceof AxiosError && error.response) {
+        setStatus({ severity: 'error', msg: error.response.data.message });
+      } else {
+        setStatus({ severity: 'error', msg: error.message });
+      }
+    }
+  };
+  const validateForm = () => {
+    if (textField == '') {
+      setError('Please input text!');
+      return false;
+    }
+    setError('');
+    setTextField('');
+    return true;
   };
 
+  const resetAndClose = () => {
+    setTimeout(() => {
+      setError('');
+    }, 500);
+    handleClose();
+  };
   return (
     <Modal open={open} onClose={handleClose}>
       <Card
