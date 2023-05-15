@@ -7,13 +7,14 @@ import Axios from '../../share/AxiosInstance';
 import Cookies from 'js-cookie';
 import { format } from 'fecha';
 import { AxiosError } from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Note = () => {
   const navigate = useNavigate();
   const [note, setNote] = useState({});
   const [openEdit, setOpenEdit] = useState(false);
   const{ noteId } = useParams();
-  
+
   useEffect(() => {// 1. call API to get a note
     const userToken = Cookies.get('UserToken');
     Axios.get(`/note/${noteId}`, { headers: { Authorization: `Bearer ${userToken}` 
