@@ -26,10 +26,23 @@ const LoginForm = ({ handleClose = () => {}, setIsLogin = () => {} }) => {
           handleClose();
           setStatus({
             msg: data.data.msg,
-            severity: 'success',});}},onError: (error) => {setUsernameOrEmail('');setPassword('');if(error instanceof AxiosError)if(error.response)return setStatus({msg: error.response.data.error,severity: 'error',});return setStatus({msg: error.message,severity: 'error',});},});
+            severity: 'success',});}},
+            onError: (error) => {setUsernameOrEmail('');
+            setPassword('');
+            if(error instanceof AxiosError)
+            if(error.response)return setStatus
+            ({
+              msg: error.response.data.error,severity: 'error',
+            });
+            return setStatus({
+              msg: error.message,severity: 'error',
+            });
+          },
+        });
 
   const handleSubmit = () => {
-    if(!validateForm()) return;loginMutation.mutate();
+    if(!validateForm()) return;
+    loginMutation.mutate();
   };
 
   const validateForm = () => {

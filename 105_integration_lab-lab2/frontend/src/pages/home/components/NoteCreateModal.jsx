@@ -26,15 +26,16 @@ const NoteCreateModal = ({ open = false, handleClose = () => {}, setNotes = () =
       if (response.data.success) {
         // TODO: show status of success here
         setNotes((prev) => [...prev, response.data.data]);
+        setStatus({ severity: 'success', msg: 'Create note successfully'});
         resetAndClose();
       }
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
         // TODO: show status of error from AxiosError here
-        setStatus({ severity: 'success', msg: 'Create note successfully'});
+        setStatus({ severity: 'error', msg: error.response.data.error});
       } else {
         // TODO: show status of other errors here
-        setStatus({ severity: 'error', msg: error.response.data.error});
+        setStatus({ severity: 'error', msg: error.message});
       }
     }
   };

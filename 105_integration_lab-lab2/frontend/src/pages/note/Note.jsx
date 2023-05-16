@@ -39,10 +39,13 @@ const Note = () => {
       if (response.data.success) {
         // TODO: show status of success here
         navigate(-1);
+        setStatus({msg: data.data.msg,severity: 'success',
+      });
       }
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
         // TODO: show status of error from AxiosError here
+        setStatus({msg: error.response.data.error,severity: 'error',});
       } else {
         // TODO: show status of other errors here
       }
